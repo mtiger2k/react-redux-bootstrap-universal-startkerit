@@ -8,7 +8,7 @@ import envs from 'envs';
 import qs from 'qs'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, match, RoutingContext } from 'react-router';
+import { Router, match, RouterContext } from 'react-router';
 import { routes } from './build/routes';
 import settings from './build/shared/settings';
 import ReactDOMStream from 'react-dom-stream/server';
@@ -73,7 +73,7 @@ const appRoutes = (app) => {
                 <body><div id="app">`);
                  const stream = ReactDOMStream.renderToString(
                  <Provider store={store}>
-                   <RoutingContext {...props} />
+                   <RouterContext {...props} />
                  </Provider>);
                  stream.pipe(res, {end: false});
                  stream.on("end", ()=> {
