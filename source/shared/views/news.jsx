@@ -3,6 +3,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Posts from './posts';
+import { fetchNews } from '../actions/news';
 
 class App extends Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { fetchPostsIfNeeded, dispatch } = this.props
-    dispatch(fetchPostsIfNeeded())
+    const { fetchNews, dispatch } = this.props
+    dispatch(fetchNews())
   }
 
   handleClickCallback(i){
@@ -57,19 +58,23 @@ App.propTypes = {
     lastUpdated: PropTypes.number
   }),
   dispatch: PropTypes.func.isRequired,
-  fetchPostsIfNeeded: PropTypes.func.isRequired
+  fetchNews: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
     receivePosts: {
-      posts: ('posts' in state) ?  state.posts : [],
-      isFetching: ('isFetching' in state) ? state.isFetching : true,
-      lastUpdated: ('lastUpdated' in state) ? state.lastUpdated : null
+      posts: ('posts' in state.news) ?  state.news.posts : [],
+      isFetching: ('isFetching' in state.news) ? state.news.isFetching : true,
+      lastUpdated: ('lastUpdated' in state.news) ? state.news.lastUpdated : null
     }
   }
 
 }
 
-export default connect(mapStateToProps)(App)
+function mapDispatchToProps(dispatch) {
+  return { fetchNews, dispatch }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 

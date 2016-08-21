@@ -1,0 +1,26 @@
+export const SIGN_UP = 'SIGN_UP'
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS'
+export const SIGN_UP_FAIL = 'SIGN_UP_FAIL'
+export const SIGN_OUT = 'SIGN_OUT'
+export const SIGN_IN = 'SIGN_IN'
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
+export const SIGN_IN_FAIL = 'SIGN_IN_FAIL'
+export const SET_MESSAGE = 'SET_MESSAGE'
+export const SET_MESSAGE_SUCCESS = 'SET_MESSAGE_SUCCESS'
+export const SET_MESSAGE_FAIL = 'SET_MESSAGE_FAIL'
+export const FETCH_USER = 'FETCH_USER'
+export const UPDATE_USER = 'UPDATE_USER'
+export const DELETE_USER = 'DELETE_USER'
+export const FETCH_BOOKS = 'FETCH_BOOKS'
+export const ADD_BOOK = 'ADD_BOOK'
+export const DELETE_BOOK = 'DELETE_BOOK'
+export const EXTERNAL_SEARCH = 'EXTERNAL_SEARCH'
+export const CLEAR_SEARCH = 'CLEAR_SEARCH'
+export const REQUEST_BOOK = 'REQUEST_BOOK'
+export const APPROVE_REQUEST = 'APPROVE_REQUEST'
+export const REMOVE_REQUEST = 'REMOVE_REQUEST'
+
+
+export const FETCH_NEWS = 'FETCH_NEWS';
+export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
+export const FETCH_NEWS_FAIL = 'FETCH_NEWS_FAIL';

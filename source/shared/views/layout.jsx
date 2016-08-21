@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Row, Col, Nav, Navbar } from 'react-bootstrap';
+import { Grid, Row, Col, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import Breadcrumbs from 'react-breadcrumbs';
 import Settings from '../settings';
 export default class Layout extends React.Component {

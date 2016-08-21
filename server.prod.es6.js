@@ -13,13 +13,24 @@ import { routes } from './build/routes';
 import settings from './build/shared/settings';
 import ReactDOMStream from 'react-dom-stream/server';
 import serveStatic from 'serve-static';
+require('dotenv').config();
+
 const port = process.env.PORT || 8080;
 const host = process.env.HOST || '0.0.0.0';
 const app = express();
 const http = require('http');
+const proxy = require('express-http-proxy');
+
 app.set('environment', envs('NODE_ENV', process.env.NODE_ENV || 'production')); 
 app.set('port', port);
 app.use(compression());
+
+app.use('/api', proxy('http://localhost:'+process.env.API_PORT, {
+    forwardPath: function(req, res) {
+        console.log("proxy url: " + require('url').parse(req.url).path);
+        return require('url').parse(req.url).path;
+    }
+}));
 
 cpFile('assets/app.css', 'public/assets/app.css').then(function(){
   console.log('Copied app.css');
