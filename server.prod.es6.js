@@ -9,7 +9,7 @@ import qs from 'qs'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, match, RouterContext } from 'react-router';
-import { routes } from './build/routes';
+import getRoutes from './build/routes';
 import settings from './build/shared/settings';
 import ReactDOMStream from 'react-dom-stream/server';
 import serveStatic from 'serve-static';
@@ -41,6 +41,8 @@ import { Provider } from 'react-redux'
 import configureStore from './build/shared/store/configureStore'
 import { fetchPostsAsync } from './build/shared/api/fetch-posts'
 
+const routes = getRoutes();
+
 const appRoutes = (app) => {
   app.get('*', (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, props) => {
@@ -54,11 +56,11 @@ const appRoutes = (app) => {
         // Compile an initial state
         const isFetching = false;
         const lastUpdated = Date.now()
-        const initialState = {
+        const initialState = {news: {
            posts,
            isFetching,
            lastUpdated
-        }
+        }}
         // Create a new Redux store instance
         const store = configureStore(initialState)
         // Render the component to a string
