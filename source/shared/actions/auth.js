@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import { fetchUser } from './user';
 
 import {
   SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAIL,
@@ -18,6 +19,7 @@ export function signUpUser(name, email, password) {
     password: password
   }),
       afterSuccess: (dispatch, getState, response) => {
+    dispatch(fetchUser());
     localStorage.setItem('auth-token', getState().auth.token);
     browserHistory.push('/');
   }
@@ -32,6 +34,7 @@ export function signInUser(email, password) {
       password: password
     }),
       afterSuccess: (dispatch, getState, response) => {
+    dispatch(fetchUser());
     localStorage.setItem('auth-token', getState().auth.token);
     const routingState = getState().routing.locationBeforeTransitions.state || {};
     browserHistory.push(routingState.nextPathname || '');

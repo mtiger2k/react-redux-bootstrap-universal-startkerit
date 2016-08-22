@@ -9,6 +9,7 @@ import Calculator from '../shared/views/calculator';
 import News from '../shared/views/news';
 import Login from '../shared/views/login';
 import Signup from '../shared/views/signup';
+import Settings from '../shared/views/settings';
 import privateRoute from './privateRoute';
 
 export default (onLogout) => (
@@ -20,6 +21,7 @@ export default (onLogout) => (
     <Route name="Signup" path="signup" component={Signup} />
     <Route name="Login" path="login" component={Login} />
     <Route path="logout" onEnter={onLogout}/>
+    <Route name="Settings" path="settings" component={privateRoute(Settings)} />
     <Route path="*" name="Error" component={Error} />
     </Route>
 );

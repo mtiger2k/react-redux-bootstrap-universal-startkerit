@@ -16,9 +16,6 @@ export default class Index extends React.Component {
           <h2>Welcome to my server-rendered app</h2>
           <h3>Check out these links</h3>
           <ul>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-            <li><Link to="/logout">Log Out</Link></li>
             <li><Link to="/calculator">Calculator</Link></li>
             <li><Link to="/news">News</Link></li>
             <li><Link to="/about">About</Link></li>
