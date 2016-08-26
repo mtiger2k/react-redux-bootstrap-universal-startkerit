@@ -3,13 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./router');
 const mongoose = require('mongoose');
-require('dotenv').config();
 
-// App setup
-var app = express();
-var PORT = process.env.API_PORT;
-app.use(bodyParser.json({ type: '*/*' }));
-router(app);
+import { apolloServer } from 'graphql-tools';
+import Schema from './data/schema';
+import Resolvers from './data/resolvers';
+
+require('dotenv').config();
 
 // DB Setup
 const mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost/booktrader";
@@ -21,6 +20,21 @@ mongoose.connect(mongoUri, function(err) {
         console.log("connection to "+mongoUri+" successful");
     }
 });
+
+
+// App setup
+var app = express();
+var PORT = process.env.API_PORT;
+app.use(bodyParser.json({ type: '*/*' }));
+router(app);
+
+app.use('/graphql', apolloServer({
+    graphiql: true,
+    pretty: true,
+    schema: Schema,
+    resolvers: Resolvers,
+    //mocks: Mocks,
+}));
 
 app.listen(PORT, function(error) {
   if (error) {

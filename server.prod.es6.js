@@ -41,6 +41,9 @@ import { Provider } from 'react-redux'
 import configureStore from './build/shared/store/configureStore'
 import { fetchPostsAsync } from './build/shared/api/fetch-posts'
 
+import ApolloClient, { createNetworkInterface, addTypename } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+
 const routes = getRoutes();
 
 const appRoutes = (app) => {
@@ -61,8 +64,13 @@ const appRoutes = (app) => {
            isFetching,
            lastUpdated
         }}
+        const client = new ApolloClient({
+            networkInterface: createNetworkInterface('/api/graphql'),
+            queryTransformer: addTypename,
+        })
+
         // Create a new Redux store instance
-        const store = configureStore(initialState)
+        const store = configureStore(initialState, client)
         // Render the component to a string
         res.write(`<!DOCTYPE html>
           <html>
@@ -85,9 +93,9 @@ const appRoutes = (app) => {
                  </script>
                 <body><div id="app">`);
                  const stream = ReactDOMStream.renderToString(
-                 <Provider store={store}>
+                     <ApolloProvider store={store} client={client}>
                    <RouterContext {...props} />
-                 </Provider>);
+                 </ApolloProvider>);
                  stream.pipe(res, {end: false});
                  stream.on("end", ()=> {
                      res.write(`</div><script src="/bundle.js"></script></body></html>`);

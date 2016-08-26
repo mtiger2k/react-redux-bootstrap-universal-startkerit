@@ -4,7 +4,10 @@ import { Row, Col } from 'react-bootstrap';
 
 import { Link } from 'react-router'
 
-export default class Index extends React.Component {
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag' // NOTE: lets us define GraphQL queries in a template language
+
+export default class App extends React.Component {
   static getData(){
   
   }
@@ -18,6 +21,7 @@ export default class Index extends React.Component {
           <ul>
             <li><Link to="/calculator">Calculator</Link></li>
             <li><Link to="/news">News</Link></li>
+            <li><Link to="/authors">Authors</Link></li>
             <li><Link to="/about">About</Link></li>
           </ul>
         </Col>
@@ -25,5 +29,6 @@ export default class Index extends React.Component {
     )
   }
 }
+
 
 
