@@ -12,6 +12,7 @@ import user from '../reducers/user';
 import news from '../reducers/news';
 import message from '../reducers/message';
 import { routerReducer as routing } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form'
 
 const middlewares = process.env.NODE_ENV === 'development' ?
     [applyMiddleware(promiseMiddleware, createLogger()), DevTools.instrument()] :
@@ -25,7 +26,8 @@ export default function configureStore(initialState, apolloClient) {
           news,
           message,
           routing,
-          apollo: apolloClient.reducer()
+          apollo: apolloClient.reducer(),
+          form: formReducer
       }),
     initialState,
       compose(applyMiddleware(apolloClient.middleware()), ...middlewares)
