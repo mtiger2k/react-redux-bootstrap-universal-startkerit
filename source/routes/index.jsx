@@ -11,7 +11,7 @@ import Authors from '../shared/views/authors';
 import Login from '../shared/views/login';
 import Signup from '../shared/views/signup';
 import Settings from '../shared/views/settings';
-import privateRoute from './privateRoute';
+import privateRoute from '../shared/views/privateRoute';
 
 export default (onLogout) => (
 <Route path="/" name="Shared App" component={Layout}>

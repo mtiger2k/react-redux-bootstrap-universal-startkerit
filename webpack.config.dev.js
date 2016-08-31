@@ -29,7 +29,11 @@ module.exports = {
       test: /\.jsx?$/,
       loaders: ['react-hot', 'babel'],
       include: path.join(__dirname, 'source')
-    }]
+    },
+     {
+       test: /\.(jpe?g|png|gif|svg)$/,
+       loader: 'file-loader?name=[name].[ext]'
+     }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

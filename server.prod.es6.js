@@ -9,7 +9,8 @@ import qs from 'qs'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, match, RouterContext } from 'react-router';
-import getRoutes from './build/routes';
+//import getRoutes from './build/routes';
+import getRoutes from './build/shared/app/routes';
 import settings from './build/shared/settings';
 import ReactDOMStream from 'react-dom-stream/server';
 import serveStatic from 'serve-static';
@@ -35,6 +36,7 @@ app.use('/api', proxy('http://localhost:'+process.env.API_PORT, {
 cpFile('assets/app.css', 'public/assets/app.css').then(function(){
   console.log('Copied app.css');
 });
+app.use(serveStatic(path.join(__dirname, 'assets')));
 app.use(serveStatic(path.join(__dirname, 'public', 'assets')));
 
 import { Provider } from 'react-redux'

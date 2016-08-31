@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Posts from './posts';
 import { fetchNews } from '../actions/news';
 
-class App extends Component {
+class News extends Component {
   constructor(props) {
     super(props)
     this.state={};
@@ -51,7 +51,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+News.propTypes = {
   receivePosts: React.PropTypes.shape({
     posts: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -76,5 +76,5 @@ function mapDispatchToProps(dispatch) {
   return { fetchNews, dispatch }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(News)
 

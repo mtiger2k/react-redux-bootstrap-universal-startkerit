@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { Router } from 'react-router';
 import { Provider } from 'react-redux';
-import getRoutes from '../routes';
+//import getRoutes from '../routes';
+import getRoutes from '../shared/app/routes';
 import configureStore from '../shared/store/configureStore';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -20,7 +21,7 @@ const devTools = process.env.NODE_ENV === 'development' ? <DevTools /> : null;
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface('/api/graphql'),
-  queryTransformer: addTypename,
+  //queryTransformer: addTypename,
   initialState: window.__INITIAL_STATE__
 })
 
@@ -40,4 +41,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('app')
 )
-

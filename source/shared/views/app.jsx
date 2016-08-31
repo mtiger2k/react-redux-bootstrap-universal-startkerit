@@ -4,9 +4,6 @@ import { Row, Col } from 'react-bootstrap';
 
 import { Link } from 'react-router'
 
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag' // NOTE: lets us define GraphQL queries in a template language
-
 export default class App extends React.Component {
   static getData(){
   
