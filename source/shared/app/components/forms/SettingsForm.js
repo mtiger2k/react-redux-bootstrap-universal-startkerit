@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 
 class SettingsForm extends Component {
     render() {
-        const { fields: { dispName, email, city, state }, handleSubmit } = this.props;
+        const { fields: { dispName, email, city, state }, handleSubmit, resetForm, submitting } = this.props;
         return (
             <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -22,10 +22,21 @@ class SettingsForm extends Component {
             <label>State</label>
             <input placeholder="State" className="form-control" {...state} type="text"/>
             </div>
-            <button type="submit" className="btn btn-primary btn-flat">Update</button>
+            <div>
+              <button type="submit" disabled={submitting} className="btn btn-primary btn-flat" >
+                {submitting ? <i/> : <i/>} Make change
+              </button>
+            </div>
             </form>
         );
     }
+}
+
+SettingsForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired
 }
 
 // Decorate the form component

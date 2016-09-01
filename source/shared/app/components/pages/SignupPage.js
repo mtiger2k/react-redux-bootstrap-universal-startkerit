@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { signUpUser, setMessage } from '../../../actions/auth'
 
 import PageWrapper from '../../../lib/page/PageWrapper';
 import PageHeader from '../../../lib/page/PageHeader';
@@ -10,12 +8,7 @@ import Box from '../../../lib/widgets/Box';
 
 import SignupForm from '../forms/SignupForm';
 
-export class SignupPage extends React.Component {
-
-    handleSignup = (data) => {
-        console.log(data);
-        this.props.signUpUser(data.name, data.email, data.password);
-    }
+export default class SignupPage extends React.Component {
 
     render() {
       return (
@@ -37,7 +30,7 @@ export class SignupPage extends React.Component {
             status="primary"
           >
             <div id="signup">
-            <SignupForm onSubmit = {this.handleSignup} />
+            <SignupForm />
             </div>
           </Box>
           </PageContent>
@@ -45,9 +38,3 @@ export class SignupPage extends React.Component {
       );
   }
 }
-
-function mapStateToProps(state) {
-  return {}
-}
-
-export default connect(mapStateToProps, { signUpUser, setMessage })(SignupPage)

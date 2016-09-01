@@ -19,9 +19,11 @@ export function signUpUser(name, email, password) {
     password: password
   }),
       afterSuccess: (dispatch, getState, response) => {
+      if (response.status == "200") {
     dispatch(fetchUser());
     localStorage.setItem('auth-token', getState().auth.token);
     browserHistory.push('/');
+    }
   }
 };
 }
@@ -34,10 +36,12 @@ export function signInUser(email, password) {
       password: password
     }),
       afterSuccess: (dispatch, getState, response) => {
+    if (response.status == "200") {
     dispatch(fetchUser());
     localStorage.setItem('auth-token', getState().auth.token);
     const routingState = getState().routing.locationBeforeTransitions.state || {};
     browserHistory.push(routingState.nextPathname || '');
+    }
   }
 };
 }
