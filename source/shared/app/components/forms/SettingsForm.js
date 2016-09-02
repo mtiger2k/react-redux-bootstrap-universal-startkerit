@@ -12,7 +12,7 @@ class SettingsForm extends Component {
             </div>
             <div className="form-group">
             <label>Email</label>
-            <input placeholder="Email" className="form-control" {...email} type="text"/>
+            <input placeholder="Email" disabled={true} className="form-control" {...email} type="text"/>
             </div>
             <div className="form-group">
             <label>City</label>

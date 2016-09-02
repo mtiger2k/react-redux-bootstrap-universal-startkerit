@@ -29,6 +29,7 @@ const submit = (values, dispatch) => {
               }).then(
                 result => {
                     console.log(result);
+                    localStorage.setItem('auth-token', result.data.token);
                     dispatch({type: 'SIGN_IN_SUCCESS', result: result});
                     dispatch(fetchUser());
                     browserHistory.push('/');

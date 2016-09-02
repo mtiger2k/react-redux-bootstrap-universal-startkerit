@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./router');
+//const router = require('./router');
+const router = require('./rethinkdb/router');
 const mongoose = require('mongoose');
 
 import { apolloServer } from 'graphql-tools';

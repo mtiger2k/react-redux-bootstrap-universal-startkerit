@@ -16,7 +16,8 @@
     "predeploy": "npm run build",
     "deploy": "npm run convert",
     "postdeploy": "echo Ready to deploy. Commit your changes and run git push heroku master",
-    "start-api": "nodemon source/server/index.js --exec babel-node"
+    "start-api": "nodemon source/server/index.js --exec babel-node",
+    "db-setup": "node dbSetup.babel.js"
   },
   "author": "Sven Anders Robbestad <robbestad@gmail.com> (http://www.robbestad.com)",
   "license": "ISC",
@@ -60,6 +61,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
     "compression": "^1.6.1",
+    "config": "^1.21.0",
     "cp-file": "^3.1.0",
     "cross-env": "^1.0.7",
     "dotenv": "^2.0.0",
@@ -96,6 +98,7 @@
     "redux-simple-router": "^2.0.4",
     "redux-thunk": "^1.0.3",
     "request-promise": "^4.1.1",
+    "rethinkdb": "^2.3.3",
     "rimraf": "^2.5.1",
     "sequelize": "^3.21.0",
     "serve-static": "^1.10.2",
